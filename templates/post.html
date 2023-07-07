@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content_head %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/static/theme1/assets/img/post-ai-bg.jpg')">
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="post-heading">
+					<h1>{{result.title}}</h1>
+					<h2 class="subheading">{{result.prompt}}</h2>
+					<span class="meta">
+						Posted by
+						<a href="https://t.me/notiboy_bot" target='_blank'>ChatGPT</a>
+						{{result.crdt}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+{% endblock %}
+{% block content_body %}
+<!-- Post Content-->
+<!-- 콘텐츠_내_자동삽입_광고-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0341152155707185"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0341152155707185"
+     data-ad-slot="2725014882"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<article class="mb-4">
+	<div class="container px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7 markdown-body">{{result.choice|safe}}</div>
+		</div>
+	</div>
+</article>
+{% endblock %}
+{% block content_footer %}
+<footer class="border-top">
+	<div class="container px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<ul class="list-inline text-center">
+					<li class="list-inline-item">
+						<a name="good" class="vote">
+							<span class="fa-stack fa-lg">
+								
+								<i class="fas fa-circle fa-stack-2x"></i>
+								<!--i class="fab fa-twitter fa-stack-1x fa-inverse"></i-->
+								<i class="fa-solid fa-thumbs-up fa-stack-1x fa-inverse" data-fa-transform="down-4.2"></i>
+								<span id='good' class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 up-8" style="font-weight:900;font-size:1.5rem;">{{vote.good}}</span>
+							</span>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a href="#!">
+							<span class="fa-stack fa-lg">
+								<i class="fas fa-circle fa-stack-2x"></i>
+								<span class="fa-layers-text fa-inverse" data-fa-transform="shrink-8" style="font-weight:900;font-size:3rem;">{{result.views}}</span>
+							</span>
+							
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a name="bad" class="vote">
+							<span class="fa-stack fa-lg">
+								<i class="fas fa-circle fa-stack-2x"></i>
+								<i class="fa-solid fa-thumbs-up fa-stack-1x fa-inverse fa-rotate-180" data-fa-transform="up-4.2 right-4"></i>
+								<span id='bad' class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 down-8" style="font-weight:900;font-size:1.5rem;">{{vote.bad}}</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<div class="small text-center text-muted fst-italic">Copyright &copy; AI 2023</div>
+			</div>
+		</div>
+	</div>
+</footer>
+{% endblock %}

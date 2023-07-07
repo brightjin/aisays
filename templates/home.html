@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content_head %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/static/theme1/assets/img/post-ai-bg.jpg')">
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="post-heading">
+					<h1>환영합니다.</h1>
+					<h2 class="subheading">A.I는 인간의 생각과 비슷하게 동작하지만, 인간의 생각과는 다르기 때문에 제공된 답변이 잘못되거나 편향될 수 있습니다. 따라서 이러한 답변을 신뢰하기 전에 다른 출처를 확인하거나 인간의 상담을 받는 것이 좋습니다.</h2>
+					<span class="meta">질문작성은 텔레그램 챗봇 <a href="https://t.me/AiSays_bot">@AiSays_bot</a> 을 통해 가능합니다.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+{% endblock %}
+{% block content_body %}
+<!-- Post Content-->
+<article class="mb-4">
+	<div class="container px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+<section class="discussion">
+	
+	<div class="bubble sender">최근 작성된 질문 알려줘.</div>
+	<div class="bubble recipient first">최근 작성된 질문입니다.</div>
+	<div class="bubble recipient middle"><a href="/{{lastest[0].seq}}">{{lastest[0].prompt_255}}</a><span class="date">{{lastest[0].crdt}}</span></div>
+	<div class="bubble recipient middle"><a href="/{{lastest[1].seq}}">{{lastest[1].prompt_255}}</a><span class="date">{{lastest[1].crdt}}</span></div>
+	<div class="bubble recipient middle"><a href="/{{lastest[2].seq}}">{{lastest[2].prompt_255}}</a><span class="date">{{lastest[2].crdt}}</span></div>
+	<div class="bubble recipient last"><a href="/{{lastest[3].seq}}">{{lastest[3].prompt_255}}</a><span class="date">{{lastest[3].crdt}}</span></div>
+	
+	<div class="bubble sender">가장 조회수 높은 글은?</div>
+	<div class="bubble recipient first">가장 조회수 높은 글입니다.</div>
+	<div class="bubble recipient middle"><a href="/{{viewed[0].seq}}">{{viewed[0].prompt_255}}</a><span class="date">{{viewed[0].crdt}}</span></div>
+	<div class="bubble recipient middle"><a href="/{{viewed[1].seq}}">{{viewed[1].prompt_255}}</a><span class="date">{{viewed[1].crdt}}</span></div>
+	<div class="bubble recipient middle"><a href="/{{viewed[2].seq}}">{{viewed[2].prompt_255}}</a><span class="date">{{viewed[2].crdt}}</span></div>
+	<div class="bubble recipient last"><a href="/{{viewed[3].seq}}">{{viewed[3].prompt_255}}</a><span class="date">{{viewed[3].crdt}}</span></div>
+	
+	<div class="bubble sender">가장 추천수 높은 글은?</div>
+	<div class="bubble recipient first">가장 추천수 높은 글입니다.</div>
+	<div class="bubble recipient middle"><a href="/{{recommend[0].seq}}">{{recommend[0].prompt_255}}</a><span class="date">{{recommend[0].crdt}}</span></div>
+	<div class="bubble recipient middle"><a href="/{{recommend[1].seq}}">{{recommend[1].prompt_255}}</a><span class="date">{{recommend[1].crdt}}</span></div>
+	<div class="bubble recipient middle"><a href="/{{recommend[2].seq}}">{{recommend[2].prompt_255}}</a><span class="date">{{recommend[2].crdt}}</span></div>
+	<div class="bubble recipient last"><a href="/{{recommend[3].seq}}">{{recommend[3].prompt_255}}</a><span class="date">{{recommend[3].crdt}}</span></div>
+</section>
+		</div>
+	</div>
+</article>
+{% endblock %}

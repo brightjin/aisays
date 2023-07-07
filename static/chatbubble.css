@@ -1,0 +1,48 @@
+.discussion {
+	/*max-width:100%;*/
+	width:800px;
+	margin: 0 auto;
+	margin-top: 1.5rem !important;
+	
+	display: flex;
+	flex-flow: column wrap;
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.discussion > .bubble {
+	border-radius: 1em;
+	padding: 0.25em 0.75em;
+	margin: 0.0625em;
+	max-width: 100%;
+}
+.discussion > .bubble > .date {
+	/* margin-left:1rem; */
+	font-size: 0.5rem;
+	display:block;
+	text-align: right;
+
+}
+.discussion > .bubble.sender {
+	align-self: flex-start;
+	/* background-color: cornflowerblue; */
+	background-color: #0d9ac7;
+	color: #fff;
+}
+.discussion > .bubble.recipient {
+	align-self: flex-end;
+	background-color: #efefef;
+}
+
+.discussion > .bubble.sender.first { border-bottom-left-radius: 0.1em; }
+.discussion > .bubble.sender.last { border-top-left-radius: 0.1em; }
+.discussion > .bubble.sender.middle {
+	border-bottom-left-radius: 0.1em;
+ 	border-top-left-radius: 0.1em;
+}
+
+.discussion > .bubble.recipient.first { border-bottom-right-radius: 0.1em; }
+.discussion > .bubble.recipient.last { border-top-right-radius: 0.1em; }
+.discussion > .bubble.recipient.middle {
+	border-bottom-right-radius: 0.1em;
+	border-top-right-radius: 0.1em;
+}
