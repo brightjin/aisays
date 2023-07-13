@@ -15,6 +15,7 @@ OpenAI 연계 웹서비스 (Oracle Cloud Ubuntu 환경에서 테스트됨)
 # 1. oracle cloud 네트워크 설정
 
 # 2. ubuntu 방화벽 해제
+- sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 8000 -m state --state NEW,ESTABLISHED -j ACCEPT
 
 # 3. python 설치
 - 3.10.6
@@ -65,6 +66,30 @@ vi /etc/mysql/mysql.conf.d/mysqld.cnf 에서 bind-address 주석처리 or 0.0.0.
 ## 4.5 python 연계
 pip install pydantic
 pip install SQLAlchemy
-pip install mysql
+pip install mysql # 설치 에러시 아래 4.6 참고
 
 pip install cryptography # mysql auth 관련 커넥션 오류 시
+
+## 4.6 pip install mysql 설치 에러시 아래 라이브러리 설치
+sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+
+## 4.7 추가적으로 설치해야할 python 패키지
+pip install aiomysql
+pip install markdown
+pip install httpx
+pip install openai
+pip install xmltodict
+pip install psutil
+pip install wheel
+pip install kiwipiepy
+
+## 4.8 설정변경
+{project}/conf/db.json
+DB 접속정보 설정
+
+## 4.9 Table 생성
+mysql console에서 아래 명령 실행
+source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/answer.sql
+source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/question.sql
+source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/tags.sql
+source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/vote.sql

@@ -1,9 +1,9 @@
 {
 	"DB":{
-		"user":"db_user,
-		"password":"db_password",
+		"user":"root",
+		"password":"admin1234",
 		"host":"localhost",
 		"port":3306,
-		"database":"db_name"
+		"database":"mysql"
 	}
 }
