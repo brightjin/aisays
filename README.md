@@ -60,32 +60,32 @@ OpenAI 연계 웹서비스 (Oracle Cloud Ubuntu 환경에서 테스트됨)
 - exit
 
 ## 4.4 mysql config 설정
-sudo nano /etc/mysql/my.cnf
-vi /etc/mysql/mysql.conf.d/mysqld.cnf 에서 bind-address 주석처리 or 0.0.0.0 허용
+- sudo nano /etc/mysql/my.cnf
+- vi /etc/mysql/mysql.conf.d/mysqld.cnf 에서 bind-address 주석처리 or 0.0.0.0 허용
 
 ## 4.5 python 연계
-pip install pydantic
-pip install SQLAlchemy
-pip install mysql # 설치 에러시 아래 4.6 참고
+- pip install pydantic
+- pip install SQLAlchemy
+- pip install mysql # 설치 에러시 아래 4.6 참고
 
-pip install cryptography # mysql auth 관련 커넥션 오류 시
+- pip install cryptography # mysql auth 관련 커넥션 오류 시
 
 ## 4.6 pip install mysql 설치 에러시 아래 라이브러리 설치
-sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+- sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
 
 ## 4.7 추가적으로 설치해야할 python 패키지
-pip install aiomysql
-pip install markdown
-pip install httpx
-pip install openai
-pip install xmltodict
-pip install psutil
-pip install wheel
-pip install kiwipiepy
+- pip install aiomysql
+- pip install markdown
+- pip install httpx
+- pip install openai
+- pip install xmltodict
+- pip install psutil
+- pip install wheel
+- pip install kiwipiepy
 
 ## 4.8 설정변경
-{project}/conf/db.json
-DB 접속정보 설정
+- {project}/conf/db.json
+- DB 접속정보 설정
 
 ## 4.9 Table 생성
 mysql console에서 아래 명령 실행
