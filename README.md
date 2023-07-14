@@ -63,13 +63,13 @@ sudo netfilter-persistent save
 
 ## 4.3 mysql 외부접속 설정
 ```Shell
-$>sudo mysql -u root -p
+sudo mysql -u root -p
 ```
 ```SQL
-mysql>CREATE USER 'root'@'%' IDENTIFIED BY '비밀번호';
-mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
-mysql>FLUSH PRIVILEGES;
-mysql>exit
+mysql> CREATE USER 'root'@'%' IDENTIFIED BY '비밀번호';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+mysql> FLUSH PRIVILEGES;
+mysql> exit
 ```
 
 ## 4.4 mysql config 설정
@@ -111,8 +111,8 @@ pip install kiwipiepy
 ## 4.9 Table 생성
 mysql console에서 아래 명령 실행
 ```SQL
-mysql>source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/answer.sql
-mysql>source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/question.sql
-mysql>source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/tags.sql
-mysql>source /home/ubuntu/venvs/aisays/src/aisays-main/script/SQL/vote.sql
+mysql> source {aisays_home}/script/SQL/answer.sql
+mysql> source {aisays_home}/script/SQL/question.sql
+mysql> source {aisays_home}/script/SQL/tags.sql
+mysql> source {aisays_home}/script/SQL/vote.sql
 ```
