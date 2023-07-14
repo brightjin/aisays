@@ -116,3 +116,11 @@ mysql> source {aisays_home}/script/SQL/question.sql
 mysql> source {aisays_home}/script/SQL/tags.sql
 mysql> source {aisays_home}/script/SQL/vote.sql
 ```
+
+## 5. Telegram Bot
+1. bot 생성
+2. .../getMe
+3. webhook 등록
+```
+https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://193.122.120.219:8000/static/webhook
+```
