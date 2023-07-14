@@ -122,5 +122,5 @@ mysql> source {aisays_home}/script/SQL/vote.sql
 2. .../getMe
 3. webhook 등록
 ```
-https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://193.122.120.219:8000/static/webhook
+https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://{address}:{port}/static/webhook
 ```
