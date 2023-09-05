@@ -9,6 +9,7 @@ OpenAI 연계 웹서비스 (Oracle Cloud Ubuntu 환경에서 테스트됨)
    - [설정위치](https://github.com/syschat0/aisays/tree/main/conf)
    - db_conf, env 설정
    - [OpenAI API Keys](https://platform.openai.com/account/api-keys)
+     (사용기간이 만료되면, 지급정보를 등록하고 API Key를 새롭게 발급해야 함.)
    - [Telegram Bot ID, API keys](https://hzoo.tistory.com/87)
    - [Telegram Bot webhook](https://docfriends.github.io/DevStrory/2019-05-22/telegram-webhook/)   
    - [네이버 파파고 API Keys](https://developers.naver.com/docs/papago/papago-nmt-overview.md#사전-준비-사항)
