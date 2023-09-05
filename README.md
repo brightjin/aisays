@@ -51,7 +51,7 @@ pip install uvicorn
 ### 3.6.1 uvicorn 실행스크립트 생성
 - 가상환경 실행스크립트 실행
 - cd {프로젝트경로}
-- uvicorn main:app --reload --host=0.0.0.0 --workers=4
+- uvicorn main:app --reload --host=0.0.0.0 --port=3000 --workers=4 --log-config {log_conf_path}/log.ini
 
 
 # 4. Mysql 관련 설정
