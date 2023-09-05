@@ -10,6 +10,7 @@ OpenAI 연계 웹서비스 (Oracle Cloud Ubuntu 환경에서 테스트됨)
    - db_conf, env 설정
    - [OpenAI API Keys](https://platform.openai.com/account/api-keys)
    - [Telegram Bot ID, API keys](https://hzoo.tistory.com/87)
+   - [Telegram Bot webhook](https://docfriends.github.io/DevStrory/2019-05-22/telegram-webhook/)   
    - [네이버 파파고 API Keys](https://developers.naver.com/docs/papago/papago-nmt-overview.md#사전-준비-사항)
 
 # 1. oracle cloud 네트워크 설정
@@ -117,10 +118,19 @@ mysql> source {aisays_home}/script/SQL/tags.sql
 mysql> source {aisays_home}/script/SQL/vote.sql
 ```
 
-## 5. Telegram Bot
+# 5. Telegram Bot
 1. bot 생성
 2. .../getMe
-3. webhook 등록
+3. webhook 등록 (URL은 https만 허용함.)
 ```
-https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://{address}:{port}/static/webhook
+https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://{address}:{port}/webhook
 ```
+
+
+# ETC
+## 무료 인증서 발급
+[Let's Encrypt](https://letsencrypt.org/ko/)
+- [Cerbot](https://certbot.eff.org/) 설치 가이드로 설치함.(자동갱신 on)
+
+## Domain 서비스
+[HOSTING.KR](https://www.hosting.kr/)
