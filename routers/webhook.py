@@ -69,6 +69,8 @@ AiSays는 공개 질의응답 서비스입니다. \n \
 예) \n \
 #en \n \
 대한민국의 미래에 대해서 써줘."]
+    ,
+    "/new":["새로운 대화를 시작합니다."]
 }
 
 # 연속대화를 위한 리스트
@@ -94,11 +96,12 @@ async def webhook(req: Request):
         logger.debug(text)
         
         if text in cmd:
+            if text == "/new":
+                global myMessages
+                myMessages = []  # 메시지 초기화
             for loop in range(len(cmd[text])):
                 await sendMessage(chat_id, cmd[text][loop])
-        elif text.startswith("/"):
-            global myMessages
-            myMessages = []  # 메시지 초기화
+        elif text.startswith("/"):            
             await sendMessage(chat_id, "'/'로 시작하지만, 알수없는 명령어에요.")
         else:
             #await sendMessage(chat_id, text)
