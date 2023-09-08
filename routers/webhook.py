@@ -203,14 +203,15 @@ def sendOpenai(chat_id, message, sTime):
     eTime = datetime.now().strftime('%H:%M:%S')
     
    
-    logger.debug(str(response.choices[0].text))
-    msg = f"[{sTime}] Q:{message} \n[{eTime}] A:\n{response.choices[0].text.strip()}"
+    logger.debug(str(response.choices[0].message.content))
+
+    msg = f"[{sTime}] Q:{message} \n[{eTime}] A:\n{response.choices[0].message.content.strip()}"
     send(chat_id,msg)
     
     json_qna = {'id':response.id.strip(),
                 'model':response.model.strip(),
                 'prompt':message,
-                'choice':response.choices[0].text.strip()
+                'choice':response.choices[0].message.content.strip()
     }
     
     if en_query_msg is not None:
