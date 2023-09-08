@@ -97,6 +97,7 @@ async def webhook(req: Request):
             for loop in range(len(cmd[text])):
                 await sendMessage(chat_id, cmd[text][loop])
         elif text.startswith("/"):
+            global myMessages
             myMessages = []  # 메시지 초기화
             await sendMessage(chat_id, "'/'로 시작하지만, 알수없는 명령어에요.")
         else:
@@ -104,8 +105,6 @@ async def webhook(req: Request):
             sTime = datetime.now().strftime('%H:%M:%S')
             Thread(target=sendOpenai, args=(chat_id, text, sTime)).start()
             #await sendOpenai(chat_id, text, sTime)
-        
-    
         
     return {"result":"ok"}
     
@@ -184,6 +183,8 @@ def sendOpenai(chat_id, message, sTime):
                 "role": "user",
                 "content": user_message         
             })
+
+        logger.debug(str(myMessages))
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
