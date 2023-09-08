@@ -173,17 +173,13 @@ def sendOpenai(chat_id, message, sTime):
     # text-moderation-playground
     # text-davinci-003
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {
-                    "role": "user",
-                    "content": query_msg if en_query_msg is None else en_query_msg
-                }
-            ],
-            temperature=0.3,
+        response = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=query_msg if en_query_msg is None else en_query_msg,
+            temperature=0,
             max_tokens=3800,
             top_p=1,
+            n=1,
             frequency_penalty=0.0,
             presence_penalty=0.0,
             stop=None
