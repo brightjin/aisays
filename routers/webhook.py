@@ -44,7 +44,7 @@ AiSays는 공개 질의응답 서비스입니다. \n \
 답변 후 URL을 생성해 드립니다. \n \
 질의응답 내용은 웹(aisays.net)에 공개됩니다.",
               "이용 전 아래의 사항이 유의해 주세요. \n \
-1. 연속대화 기능이 지원됩니다.(새로운 대화는 /new) \n \
+1. 연속대화 기능을 지원하지 않습니다. \n \
 2. 개인정보를 담은 질문은 피해주세요. \n \
 본 서비스는 웹상에 질문과 답변이 공개됩니다.\n \
 3. AI(GPT 등)의 자동답변은 정확성과 신뢰성이 보장되지 않습니다. \n \
@@ -69,12 +69,7 @@ AiSays는 공개 질의응답 서비스입니다. \n \
 예) \n \
 #en \n \
 대한민국의 미래에 대해서 써줘."]
-    ,
-    "/new":["새로운 대화를 시작합니다."]
 }
-
-# 연속대화를 위한 리스트
-myMessages = []
 
 @router.post("/webhook", tags=["bot"])
 async def webhook(req: Request):
@@ -95,10 +90,7 @@ async def webhook(req: Request):
         logger.debug(chat_id)
         logger.debug(text)
         
-        if text in cmd:
-            if text == "/new":
-                global myMessages
-                myMessages = []  # 메시지 초기화
+        if text in cmd:           
             for loop in range(len(cmd[text])):
                 await sendMessage(chat_id, cmd[text][loop])
         elif text.startswith("/"):            
@@ -176,22 +168,15 @@ def sendOpenai(chat_id, message, sTime):
     #await sendEx("sendChatAction",chat_id,"typing",callbackStatus)
     # text-moderation-playground
     # text-davinci-003
-
-    # user message
-    user_message = query_msg if en_query_msg is None else en_query_msg
-
     try:
-        myMessages.append(
-            {
-                "role": "user",
-                "content": user_message         
-            })
-
-        logger.debug(str(myMessages))
-
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=myMessages,
+            messages=[
+                {
+                    "role": "user",
+                    "content": query_msg if en_query_msg is None else en_query_msg         
+                }
+            ],
             temperature=0.3,
             max_tokens=3800,
             top_p=1,
@@ -213,12 +198,6 @@ def sendOpenai(chat_id, message, sTime):
     logger.debug("response callbackStatus:"+str(callbackStatus))
     eTime = datetime.now().strftime('%H:%M:%S')
     
-    myMessages.append(
-        {
-            "role": "assistant",
-            "content": str(response.choices[0].message.content)         
-        })
-
     logger.debug(str(response))
     logger.debug(str(response.choices[0].message.content))
 
