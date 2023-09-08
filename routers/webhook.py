@@ -71,7 +71,8 @@ AiSays는 공개 질의응답 서비스입니다. \n \
 대한민국의 미래에 대해서 써줘."]
 }
 
-
+# 연속대화를 위한 리스트
+myMessages = []
 
 @router.post("/webhook", tags=["bot"])
 async def webhook(req: Request):
@@ -96,6 +97,7 @@ async def webhook(req: Request):
             for loop in range(len(cmd[text])):
                 await sendMessage(chat_id, cmd[text][loop])
         elif text.startswith("/"):
+            myMessages = []  # 메시지 초기화
             await sendMessage(chat_id, "'/'로 시작하지만, 알수없는 명령어에요.")
         else:
             #await sendMessage(chat_id, text)
@@ -172,15 +174,20 @@ def sendOpenai(chat_id, message, sTime):
     #await sendEx("sendChatAction",chat_id,"typing",callbackStatus)
     # text-moderation-playground
     # text-davinci-003
+
+    # user message
+    user_message = query_msg if en_query_msg is None else en_query_msg
+
     try:
+        myMessages.append(
+            {
+                "role": "user",
+                "content": user_message         
+            })
+
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {
-                    "role": "user",
-                    "content": query_msg if en_query_msg is None else en_query_msg
-                }
-            ],
+            messages=myMessages,
             temperature=0.3,
             max_tokens=3800,
             top_p=1,
@@ -202,7 +209,13 @@ def sendOpenai(chat_id, message, sTime):
     logger.debug("response callbackStatus:"+str(callbackStatus))
     eTime = datetime.now().strftime('%H:%M:%S')
     
-   
+    myMessages.append(
+        {
+            "role": "assistant",
+            "content": str(response.choices[0].message.content)         
+        })
+
+    logger.debug(str(response))
     logger.debug(str(response.choices[0].message.content))
 
     msg = f"[{sTime}] Q:{message} \n[{eTime}] A:\n{response.choices[0].message.content.strip()}"
