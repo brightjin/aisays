@@ -94,7 +94,8 @@ async def webhook(req: Request):
             for loop in range(len(cmd[text])):
                 await sendMessage(chat_id, cmd[text][loop])
         elif text.startswith("/lotto"):            
-            await sendMessage(chat_id, requests.get("http://localhost:3000"))
+            logger.debug(str(requests.get("http://localhost:3000").text))
+            await sendMessage(chat_id, str(requests.get("http://localhost:3000").text))
         elif text.startswith("/"):            
             await sendMessage(chat_id, "'/'로 시작하지만, 알수없는 명령어에요.")
         else:
